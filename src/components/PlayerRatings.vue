@@ -1,7 +1,48 @@
 <template>
-  <div>
-    <h1>{{ title }}</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste veniam, harum nisi aut voluptatibus ducimus? Minima perferendis reprehenderit cupiditate rerum a, doloribus numquam expedita voluptates non illum. Eum, harum aut.</p>
+  <div class="container">
+    <div class="col col_fw">
+      <h1 class="page-title">{{ title }}</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="table__ranking">Ranking</th>
+            <th>Player</th>
+            <th>Team</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="table__ranking">
+              <span>1</span>
+            </td>
+            <td>
+              <span>Patrick Dangerfield</span>
+            </td>
+            <td>
+              <span>Geelong Cats</span>
+            </td>
+            <td>
+              <span>MIDFIELDER</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="table__ranking">
+              <span>2</span>
+            </td>
+            <td>
+              <span>Patrick Dangerfield</span>
+            </td>
+            <td>
+              <span>Geelong Cats</span>
+            </td>
+            <td>
+              <span>MIDFIELDER</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -10,14 +51,43 @@ export default {
   // name: 'HelloWorld',
   data () {
     return {
-      title: 'Player ratings'
+      title: 'Overall player ratings'
     }
   }
 }
 </script>
 
-<style scoped>
-  h1 {
-    color: green;
+<style lang="scss" scoped>
+@import "../assets/scss/base/settings";
+
+.table {
+  border: 1px solid $medium-gray;
+  width: 100%;
+
+  th {
+    background-color: $light-gray;
+    text-align: left;
   }
+
+  th,td {
+    padding: 1rem;
+  }
+
+  tr {
+    &:not(:last-child) td {
+      border-bottom: 1px solid $light-gray;
+    }
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+
+  &__ranking {
+    width: 90px;
+    text-align: center;
+  }
+}
+
 </style>
