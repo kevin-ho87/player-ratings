@@ -6,8 +6,10 @@
       </div>
     </div>
     <div class="container">
+      <!-- Club images data gets looped through and printed out -->
       <div class="col col_club-logo" v-for="club in clubs" :key="club.id">
         <a :href="club.url" target="_blank" rel="noopener" class="club-cta">
+          <!-- Attach title and alt tag to image -->
           <img :src="`/static/images/${club.image}`" :title="club.title" :alt="club.title">
         </a>
       </div>

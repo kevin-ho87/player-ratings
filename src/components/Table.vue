@@ -3,13 +3,17 @@
     <table class="table">
       <thead>
         <tr>
+          <!-- Active class to display column sorted -->
+          <!-- Clicking will call sort function with selected heading passed in -->
           <th v-for="heading in headings" :class="{ active: selectedSort === heading}" @click="order(heading)">
             {{ heading | capitalise }}
+            <!-- Displaying arrow direction based on column sort state -->
             <span class="arrow" :class="sortOrders[heading] ? 'arrow_asc' : 'arrow_dsc'"></span>
           </th>
         </tr>
       </thead>
       <tbody>
+        <!-- Sorted player data returned -->
         <tr v-for="playerRow in filteredData">
           <td v-for="player in playerRow">
             <span class="title-case">{{ player }}</span>
@@ -49,6 +53,7 @@ export default {
   },
   filters: {
     capitalise (value) {
+      // Capitalise first character
       return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },

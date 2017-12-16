@@ -5,6 +5,7 @@
         <a href="http://www.afl.com.au/" target="_blank" rel="noopener" class="logo"><img src="../assets/logo-afl.svg" alt="AFL"></a>
       </div>
       <div class="col">
+        <!-- Navigation using Vue router -->
         <nav class="nav">
           <ul class="nav__ul">
             <li class="nav__li">

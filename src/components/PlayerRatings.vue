@@ -7,12 +7,16 @@
     </div>
     <div class="container">
       <div class="col col_fw">
+        <!-- Show loading message first and when axios call has no error -->
         <div v-if="!isLoaded && !isError" class="box">
           <p>Loading &hellip;</p>
         </div>
+        <!-- Show if an error has occured during axios call -->
         <div v-if="isError" class="box box_error">
           <p>An error has occured. Please try again later.</p>
         </div>
+        <!-- Show Table component when axios call is successfull -->
+        <!-- Pass in table heading and player rating data to Table component -->
         <Table v-if="isLoaded" :headings="headings" :players="playerRatings" />
       </div>
     </div>
@@ -35,7 +39,7 @@ export default {
   },
   computed: {
     playerRatings () {
-      // Create new array of objects to pass into Table component
+      // Create new array of objects with modified ratings data to pass into Table component
       return this.ratings.map(item => {
         const { givenName, surname } = item.player.playerName
         return {
@@ -49,7 +53,9 @@ export default {
   },
   methods: {
     fetchPlayerRatings () {
+      // Ajax call to get ratings data
       axios.get('static/ratings.json').then((response) => {
+        // Attach results to ratings array
         this.ratings = response.data.playerRatings
         this.isLoaded = true
       }, () => {
