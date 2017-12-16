@@ -1,9 +1,20 @@
 <template>
-  <div class="container">
-    <div class="col col_fw">
-      <h1 class="page-title">{{ title }}</h1>
-
-      <Table :headings="headings" :players="playerRatings" />
+  <div>
+    <div class="container">
+      <div class="col col_fw">
+        <h1 class="page-title">{{ title }}</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col col_fw">
+        <div v-if="!isLoaded && !isError" class="box">
+          <p>Loading &hellip;</p>
+        </div>
+        <div v-if="isError" class="box box_error">
+          <p>An error has occured. Please try again later.</p>
+        </div>
+        <Table v-if="isLoaded" :headings="headings" :players="playerRatings" />
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +27,8 @@ export default {
   data () {
     return {
       title: 'Overall player ratings',
+      isLoaded: false,
+      isError: false,
       headings: ['ranking', 'name', 'position', 'team'],
       ratings: []
     }
@@ -38,8 +51,9 @@ export default {
     fetchPlayerRatings () {
       axios.get('static/ratings.json').then((response) => {
         this.ratings = response.data.playerRatings
-      }, (error) => {
-        console.log(error)
+        this.isLoaded = true
+      }, () => {
+        this.isError = true
       })
     }
   },
@@ -54,5 +68,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/base/settings";
+
+.box {
+  border: 1px solid $medium-gray;
+  padding: 1rem;
+
+  &_error {
+    border-color: $red;
+    color: $red;
+  }
+}
 
 </style>
