@@ -28,3 +28,9 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+Vue router
+https://router.vuejs.org/en/api/router-link.html
+
+Vue CLI webpack project documentation
+http://vuejs-templates.github.io/webpack/structure.html

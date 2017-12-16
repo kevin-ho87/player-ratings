@@ -1,7 +1,20 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <router-view/>
+    <nav>
+      <ul>
+        <li>
+          <router-link :to="'/'">Player ratings</router-link>
+        </li>
+        <li>
+          <router-link :to="'clubs'">Clubs</router-link>
+        </li>
+      </ul>
+    </nav>
+
+    <div>
+      <router-view/>
+    </div>
   </div>
 </template>
 
