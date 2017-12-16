@@ -28,7 +28,7 @@ export default {
         return {
           ranking: item.detailedRatings[0].ranking,
           name: `${givenName} ${surname}`,
-          position: item.position,
+          position: item.position.toLowerCase(),
           team: item.team.teamName
         }
       })

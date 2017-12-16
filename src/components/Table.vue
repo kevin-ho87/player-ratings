@@ -3,14 +3,14 @@
     <thead>
       <tr>
         <th v-for="heading in headings">
-          {{ heading }}
+          {{ heading | capitalise }}
         </th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="playerRow in players">
         <td v-for="player in playerRow">
-          <span>{{ player }}</span>
+          <span class="title-case">{{ player }}</span>
         </td>
       </tr>
     </tbody>
@@ -20,7 +20,12 @@
 <script>
 
 export default {
-  props: ['headings', 'players']
+  props: ['headings', 'players'],
+  filters: {
+    capitalise (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }
 }
 </script>
 
