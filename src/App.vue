@@ -1,16 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <nav>
-      <ul>
-        <li>
-          <router-link :to="'/'">Player ratings</router-link>
-        </li>
-        <li>
-          <router-link :to="'clubs'">Clubs</router-link>
-        </li>
-      </ul>
-    </nav>
+    <Header />
 
     <div>
       <router-view/>
@@ -19,8 +9,13 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Header
+  }
 }
 </script>
 
