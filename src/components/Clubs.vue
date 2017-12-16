@@ -1,23 +1,165 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste veniam, harum nisi aut voluptatibus ducimus? Minima perferendis reprehenderit cupiditate rerum a, doloribus numquam expedita voluptates non illum. Eum, harum aut.</p>
+    <div class="container">
+      <div class="col col_fw">
+        <h1 class="page-title">{{ title }}</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col col_club-logo" v-for="club in clubs" :key="club.id">
+        <a :href="club.url" target="_blank" rel="noopener" class="club-cta">
+          <img :src="`/static/images/${club.image}`" :title="club.title" :alt="club.title">
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
-  // name: 'HelloWorld',
+  // name: 'Clubs',
   data () {
     return {
-      title: 'Clubs'
+      title: 'Clubs',
+      clubs: [
+        {
+          id: 1,
+          title: 'Adelaide Crows',
+          url: 'http://www.afc.com.au',
+          image: 'icon-club-adel.svg'
+        },
+        {
+          id: 2,
+          title: 'Brisbane Lions',
+          url: 'http://www.lions.com.au',
+          image: 'icon-club-bl.svg'
+        },
+        {
+          id: 3,
+          title: 'Carlton',
+          url: 'http://www.carltonfc.com.au',
+          image: 'icon-club-carl.svg'
+        },
+        {
+          id: 4,
+          title: 'Collingwood',
+          url: 'http://www.collingwoodfc.com.au',
+          image: 'icon-club-coll.svg'
+        },
+        {
+          id: 5,
+          title: 'Fremantle',
+          url: 'http://www.fremantlefc.com.au',
+          image: 'icon-club-fre.svg'
+        },
+        {
+          id: 6,
+          title: 'Gold Coast Suns',
+          url: 'http://www.goldcoastfc.com.au',
+          image: 'icon-club-gcfc.svg'
+        },
+        {
+          id: 7,
+          title: 'Geelong Cats',
+          url: 'http://www.geelongcats.com.au',
+          image: 'icon-club-geel.svg'
+        },
+        {
+          id: 8,
+          title: 'GWS Giants',
+          url: 'http://www.gwsgiants.com.au',
+          image: 'icon-club-gws.svg'
+        },
+        {
+          id: 9,
+          title: 'Hawthorn',
+          url: 'http://www.hawthornfc.com.au',
+          image: 'icon-club-haw.svg'
+        },
+        {
+          id: 10,
+          title: 'Melbourne',
+          url: 'http://www.melbournefc.com.au',
+          image: 'icon-club-melb.svg'
+        },
+        {
+          id: 11,
+          title: 'North Melbourne',
+          url: 'http://www.nmfc.com.au',
+          image: 'icon-club-nmfc.svg'
+        },
+        {
+          id: 12,
+          title: 'Port Adelaide',
+          url: 'http://www.portadelaidefc.com.au',
+          image: 'icon-club-port.svg'
+        },
+        {
+          id: 13,
+          title: 'Richmond',
+          url: 'http://www.richmondfc.com.au',
+          image: 'icon-club-rich.svg'
+        },
+        {
+          id: 14,
+          title: 'St Kilda',
+          url: 'http://www.saints.com.au',
+          image: 'icon-club-stk.svg'
+        },
+        {
+          id: 15,
+          title: 'Sydney Swans',
+          url: 'http://www.sydneyswans.com.au',
+          image: 'icon-club-syd.svg'
+        },
+        {
+          id: 16,
+          title: 'Western Bulldogs',
+          url: 'http://www.westernbulldogs.com.au',
+          image: 'icon-club-wb.svg'
+        },
+        {
+          id: 17,
+          title: 'West Coast Eagles',
+          url: 'http://www.westcoasteagles.com.au',
+          image: 'icon-club-wce.svg'
+        }
+      ]
     }
   }
 }
 </script>
 
-<style scoped>
-  h1 {
-    color: blue;
+<style lang="scss" scoped>
+@import "../assets/scss/base/settings";
+
+.col_club-logo {
+  max-width: 15%;
+  flex: 0 0 15%;
+  display: flex;
+}
+
+.club-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+
+  img {
+    width: 100%;
+    max-height: 100%;
+    transform: scale(.9);
+    transition: transform .3s ease-in-out;
   }
+
+  &:focus,
+  &:hover {
+    img {
+      transform: scale(1);
+    }
+  }
+}
+
 </style>
