@@ -1,8 +1,8 @@
 <template>
   <header class="site-header">
     <div class="site-header__container container">
-      <div class="col">
-        <a href="http://www.afl.com.au/" target="_blank" rel="noopener" class="logo"><img src="../assets/logo-afl.svg" width="120" height="auto" alt="AFL"></a>
+      <div class="col col_logo">
+        <a href="http://www.afl.com.au/" target="_blank" rel="noopener" class="logo"><img src="../assets/logo-afl.svg" alt="AFL"></a>
       </div>
       <div class="col">
         <nav class="nav">
@@ -28,49 +28,62 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/base/settings";
+@import "../assets/scss/base/mixins";
 
-  .site-header {
-    background-color: $primary-color;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+.site-header {
+  background-color: $primary-color;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 
-    &__container {
-      align-items: center;
-    }
+  &__container {
+    align-items: center;
+  }
+}
+
+.col_logo {
+  max-width: 100px;
+  flex: 0 0 100px;
+  @include breakpoint(tablet) {
+    max-width: 140px;
+    flex: 0 0 140px;
+  }
+}
+
+.logo {
+  display: block
+}
+
+.nav {
+  &__ul {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
   }
 
-  .nav {
-    &__ul {
-      display: flex;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding-left: 0;
-      list-style-type: none;
-    }
-
-    &__li {
-
-    }
-
-    &__link {
-      display: block;
-      font-family: 'Titillium Web', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: $white;
-      text-decoration: none;
+  &__link {
+    display: block;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+    color: $white;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    @include breakpoint(tablet) {
       padding: 1rem 1.5rem;
-      border-top: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-
-      &:hover {
-        border-bottom-color: $white;
-      }
+      font-size: 1.2rem;
     }
 
-    .router-link-exact-active {
-      background-color: $white;
-      color: $primary-color;
+    &:hover {
+      border-bottom-color: $white;
     }
   }
+
+  .router-link-exact-active {
+    background-color: $white;
+    color: $primary-color;
+  }
+}
 </style>

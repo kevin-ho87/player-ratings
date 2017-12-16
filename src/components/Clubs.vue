@@ -16,9 +16,7 @@
 </template>
 
 <script>
-
 export default {
-  // name: 'Clubs',
   data () {
     return {
       title: 'Clubs',
@@ -133,11 +131,22 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/base/settings";
+@import "../assets/scss/base/mixins";
 
 .col_club-logo {
-  max-width: 15%;
-  flex: 0 0 15%;
   display: flex;
+  @include breakpoint(mobileonly) {
+    max-width: 33%;
+    flex: 0 0 33%;
+  }
+  @include breakpoint(tablet) {
+    max-width: 25%;
+    flex: 0 0 25%;
+  }
+  @include breakpoint(desktop) {
+    max-width: 15%;
+    flex: 0 0 15%;
+  }
 }
 
 .club-cta {

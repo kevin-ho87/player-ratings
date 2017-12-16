@@ -1,21 +1,23 @@
 <template>
-  <table class="table">
-    <thead>
-      <tr>
-        <th v-for="heading in headings" :class="{ active: selectedSort === heading}" @click="order(heading)">
-          {{ heading | capitalise }}
-          <span class="arrow" :class="sortOrders[heading] ? 'arrow_asc' : 'arrow_dsc'"></span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="playerRow in filteredData">
-        <td v-for="player in playerRow">
-          <span class="title-case">{{ player }}</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-holder">
+    <table class="table">
+      <thead>
+        <tr>
+          <th v-for="heading in headings" :class="{ active: selectedSort === heading}" @click="order(heading)">
+            {{ heading | capitalise }}
+            <span class="arrow" :class="sortOrders[heading] ? 'arrow_asc' : 'arrow_dsc'"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="playerRow in filteredData">
+          <td v-for="player in playerRow">
+            <span class="title-case">{{ player }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -63,15 +65,25 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/base/settings";
+@import "../assets/scss/base/mixins";
+
+.table-holder {
+  width: 100%;
+  overflow-x: auto;
+}
 
 .table {
   border: 1px solid $medium-gray;
   width: 100%;
+  @include breakpoint(mobileonly) {
+    font-size: .8rem;
+  }
 
   th {
     opacity: .5;
     background-color: $light-gray;
     text-align: left;
+    white-space: nowrap;
     cursor: pointer;
 
     &.active {
@@ -80,7 +92,12 @@ export default {
   }
 
   th,td {
-    padding: 1rem;
+    @include breakpoint(mobileonly) {
+      padding: .5rem;
+    }
+    @include breakpoint(tablet) {
+      padding: 1rem;
+    }
   }
 
   tr {
