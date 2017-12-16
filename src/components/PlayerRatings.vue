@@ -42,17 +42,46 @@
           </tr>
         </tbody>
       </table>
+      <p>{{ playerRatings }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  // name: 'HelloWorld',
+  // name: 'PlayerRatings',
   data () {
     return {
-      title: 'Overall player ratings'
+      title: 'Overall player ratings',
+      ratings: []
     }
+  },
+  computed: {
+    playerRatings () {
+      return this.ratings.map(item => {
+        const { givenName, surname } = item.player.playerName
+        return {
+          ranking: item.detailedRatings.ranking,
+          position: item.position,
+          name: `${givenName} ${surname}`,
+          team: item.team.teamName
+        }
+      })
+    }
+  },
+  methods: {
+    fetchPlayerRatings () {
+      axios.get('static/ratings.json').then((response) => {
+        this.ratings = response.data.playerRatings
+      }, (error) => {
+        console.log(error)
+      })
+    }
+  },
+  mounted () {
+    this.fetchPlayerRatings()
   }
 }
 </script>
