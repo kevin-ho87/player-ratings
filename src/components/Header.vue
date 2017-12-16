@@ -54,11 +54,12 @@ export default {
 
     &__link {
       display: block;
+      font-family: 'Titillium Web', sans-serif;
       font-size: 1.2rem;
-      padding: 1rem 1.5rem;
+      font-weight: 700;
       color: $white;
       text-decoration: none;
-      font-weight: 700;
+      padding: 1rem 1.5rem;
       border-top: 4px solid transparent;
       border-bottom: 4px solid transparent;
 
