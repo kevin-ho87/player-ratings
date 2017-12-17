@@ -1,6 +1,6 @@
-# player-ratings
+# AFL Player Ratings
 
-> A Vue.js project
+> A Vue.js project displaying AFL overall player ratings and AFL clubs.
 
 ## Build Setup
 
@@ -20,17 +20,8 @@ npm run build --report
 # run unit tests
 npm run unit
 
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-Vue router
-https://router.vuejs.org/en/api/router-link.html
-
-Vue CLI webpack project documentation
-http://vuejs-templates.github.io/webpack/structure.html
+[Vue router](https://router.vuejs.org/en/) was used to control the 2 page routes.
