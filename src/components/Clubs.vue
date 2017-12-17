@@ -8,16 +8,15 @@
     <div class="container">
       <!-- Club images data gets looped through and printed out -->
       <div class="col col_club-logo" v-for="club in clubs" :key="club.id">
-        <a :href="club.url" target="_blank" rel="noopener" class="club-cta">
-          <!-- Attach title and alt tag to image -->
-          <img :src="`/static/images/${club.image}`" :title="club.title" :alt="club.title">
-        </a>
+        <Club :url="club.url" :image="club.image" :title="club.title" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Club from '@/components/Club'
+
 export default {
   data () {
     return {
@@ -127,6 +126,9 @@ export default {
         }
       ]
     }
+  },
+  components: {
+    Club
   }
 }
 </script>
@@ -148,28 +150,6 @@ export default {
   @include breakpoint(desktop) {
     max-width: 15%;
     flex: 0 0 15%;
-  }
-}
-
-.club-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem;
-
-  img {
-    width: 100%;
-    max-height: 100%;
-    transform: scale(.9);
-    transition: transform .3s ease-in-out;
-  }
-
-  &:focus,
-  &:hover {
-    img {
-      transform: scale(1);
-    }
   }
 }
 
